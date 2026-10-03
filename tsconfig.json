@@ -1,0 +1,34 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compileOnSave": false,
+    "files": [],
+    "references": [
+        {
+            "path": "./packages/runtime-config"
+        },
+        {
+            "path": "./packages/core"
+        },
+        {
+            "path": "./tools/generators"
+        },
+        {
+            "path": "./packages/runtime-executions"
+        },
+        {
+            "path": "./packages/object-storage"
+        },
+        {
+            "path": "./packages/runtime-presenters"
+        },
+        {
+            "path": "./packages/runtime-health"
+        },
+        {
+            "path": "./packages/runtime-observability"
+        },
+        {
+            "path": "./packages/runtime-messaging"
+        }
+    ]
+}

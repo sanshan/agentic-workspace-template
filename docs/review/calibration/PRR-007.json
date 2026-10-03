@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-007",
+    "cases": [
+        {
+            "id": "new-service-relationship-with-stale-system-overview",
+            "expected": "violation",
+            "context": "The current System Overview models Web -> Documents but no Web -> API relationship. The reviewed change makes the Web application call the API liveness endpoint during application bootstrap and leaves docs/architecture/ unchanged.",
+            "diff": "diff --git a/apps/web/src/main.tsx b/apps/web/src/main.tsx\n@@\n const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);\n \n+void fetch('/api/health/live').catch(() => undefined);\n+\n root.render(\n"
+        },
+        {
+            "id": "internal-refactor-with-stable-topology",
+            "expected": "not-applicable",
+            "context": "The change only renames an internal runtime-composition variable inside an existing service; deployable systems, data ownership, external systems, and major relationships are unchanged.",
+            "diff": "diff --git a/apps/services/documents/src/app/infrastructure/infrastructure.module.ts b/apps/services/documents/src/app/infrastructure/infrastructure.module.ts\n-const documentsRuntimeModule = RuntimeExecutionsModule.register([documents]);\n+const documentsExecutionRuntimeModule = RuntimeExecutionsModule.register([documents]);\n"
+        }
+    ]
+}

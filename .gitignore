@@ -1,0 +1,156 @@
+# JetBrains IDEs
+.idea/
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids/
+.data/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components/
+web_modules/
+
+# pnpm
+.pnpm-store/
+
+# npm cache
+.npm/
+
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn-integrity
+
+# TypeScript build output
+**/dist/
+**/out-tsc/
+*.tsbuildinfo
+
+# Build output
+build/
+out/
+.output/
+
+# Compiled native addons
+build/Release/
+
+# Nx
+.nx/
+.nx/cache/
+.nx/workspace-data/
+.nx/migrate-runs/
+
+# Test and lint caches
+.eslintcache
+.stylelintcache
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+vitest.config.*.timestamp*
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# Next.js
+.next/
+
+# Nuxt
+.nuxt/
+
+# VuePress
+.vuepress/dist/
+.temp/
+
+# VitePress
+**/.vitepress/dist/
+**/.vitepress/cache/
+
+# SvelteKit
+.svelte-kit/
+
+# Docusaurus
+.docusaurus/
+
+# Serverless
+.serverless/
+
+# FuseBox
+.fusebox/
+
+# DynamoDB Local
+.dynamodb/
+
+# Firebase
+.firebase/
+
+# TernJS
+.tern-port
+
+# VS Code extension testing
+.vscode-test/
+
+# Instrumented libraries
+lib-cov/
+
+# Grunt
+.grunt/
+
+# node-waf
+.lock-wscript
+
+# REPL history
+.node_repl_history
+
+# Package archives
+*.tgz
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.claude/worktrees
+.claude/settings.local.json
+test-output
+
+vite.config.*.timestamp*

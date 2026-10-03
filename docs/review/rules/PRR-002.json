@@ -1,0 +1,11 @@
+{
+    "id": "PRR-002",
+    "title": "Keep reusable guidance with one documentation owner",
+    "scope": "Changes to root or nested AGENTS.md files and docs/engineering Markdown that add, copy, or relocate reusable engineering guidance.",
+    "applies_when": "A changed scoped instruction file states guidance that also applies outside its subtree or responsibility, or restates guidance already owned by another canonical document.",
+    "violation": "The change creates a second normative owner by copying or paraphrasing reusable rules instead of keeping them with the canonical engineering or implementation owner and routing to that owner.",
+    "non_violation": "A concise routing reference, a genuinely subtree-local constraint, or an implementation-local invariant is not duplication merely because it names a shared rule or owner.",
+    "severity": "blocking",
+    "evidence": "Cite the changed guidance, the existing canonical location, and the scopes showing that both texts claim ownership of the same reusable requirement.",
+    "canonical_source": "AGENTS.md#workspace-agent-rules"
+}

@@ -1,0 +1,76 @@
+{
+    "name": "@agentic-workspace/runtime-presenters",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./events": {
+            "types": "./dist/events.d.ts",
+            "import": "./dist/events.js",
+            "default": "./dist/events.js"
+        },
+        "./events/nest": {
+            "types": "./dist/events/nest.d.ts",
+            "import": "./dist/events/nest.js",
+            "default": "./dist/events/nest.js"
+        },
+        "./http": {
+            "types": "./dist/http.d.ts",
+            "import": "./dist/http.js",
+            "default": "./dist/http.js"
+        },
+        "./http/errors": {
+            "types": "./dist/http/errors.d.ts",
+            "import": "./dist/http/errors.js",
+            "default": "./dist/http/errors.js"
+        },
+        "./http/errors/nest": {
+            "types": "./dist/http/errors/nest.d.ts",
+            "import": "./dist/http/errors/nest.js",
+            "default": "./dist/http/errors/nest.js"
+        },
+        "./http/openapi": {
+            "types": "./dist/http/openapi.d.ts",
+            "import": "./dist/http/openapi.js",
+            "default": "./dist/http/openapi.js"
+        },
+        "./http/health": {
+            "types": "./dist/http/health.d.ts",
+            "import": "./dist/http/health.js",
+            "default": "./dist/http/health.js"
+        }
+    },
+    "dependencies": {
+        "@agentic-workspace/core": "workspace:*",
+        "@agentic-workspace/runtime-health": "workspace:*",
+        "@agentic-workspace/runtime-messaging": "workspace:*",
+        "@agentic-workspace/runtime-observability": "workspace:*",
+        "@event-driven-platform/actor": "^0.1.7",
+        "@event-driven-platform/event": "^0.2.0",
+        "@event-driven-platform/execution": "^0.0.8",
+        "@event-driven-platform/intent": "^0.2.4",
+        "@event-driven-platform/tenant-reference": "^0.1.7",
+        "@event-driven-platform/use-case": "^0.1.0",
+        "@event-driven-platform/use-case-executor": "^0.1.2",
+        "@nestjs/common": "^11.0.0",
+        "@nestjs/core": "^11.0.0",
+        "@nestjs/swagger": "^11.4.7",
+        "@nestjs/terminus": "^11.1.0",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@nestjs/platform-express": "^11.0.0",
+        "@nestjs/testing": "^11.0.0",
+        "@types/supertest": "^7.2.1",
+        "supertest": "^7.2.2"
+    }
+}

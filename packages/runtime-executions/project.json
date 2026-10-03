@@ -1,0 +1,7 @@
+{
+    "name": "@agentic-workspace/runtime-executions",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/runtime-executions/src",
+    "projectType": "library",
+    "tags": ["type:runtime"]
+}

@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.nx
+apps/**/test-results
+apps/**/playwright-report
+apps/services/documents-load/grafana/dashboards/k6-prometheus.json

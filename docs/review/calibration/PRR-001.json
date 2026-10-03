@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-001",
+    "cases": [
+        {
+            "id": "unrelated-backend-cache",
+            "expected": "violation",
+            "context": "Task goal: rename the Documents upload button label. The task explicitly excludes backend and runtime behavior changes.",
+            "diff": "diff --git a/apps/api/src/app/infrastructure/document-cache.ts b/apps/api/src/app/infrastructure/document-cache.ts\nnew file mode 100644\n+export class DocumentCache {\n+    private readonly values = new Map<string, unknown>();\n+}"
+        },
+        {
+            "id": "required-local-configuration-docs",
+            "expected": "no-violation",
+            "context": "Task goal: add a required Documents storage environment variable and make fresh local setup work. Acceptance explicitly requires a safe example value and setup documentation.",
+            "diff": "diff --git a/.env.example b/.env.example\n+DOCUMENTS_STORAGE_BUCKET=documents-local\ndiff --git a/README.md b/README.md\n+The local Documents storage bucket is configured by DOCUMENTS_STORAGE_BUCKET."
+        }
+    ]
+}

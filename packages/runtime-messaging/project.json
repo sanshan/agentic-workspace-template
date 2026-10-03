@@ -1,0 +1,7 @@
+{
+    "name": "@agentic-workspace/runtime-messaging",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/runtime-messaging/src",
+    "projectType": "library",
+    "tags": ["type:runtime"]
+}

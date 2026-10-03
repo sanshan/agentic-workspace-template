@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-004",
+    "cases": [
+        {
+            "id": "service-local-runner-retry-wrapper",
+            "expected": "violation",
+            "context": "EDP Runner owns Command-driven retry and @agentic-workspace/runtime-executions owns standard service composition.",
+            "diff": "diff --git a/apps/services/documents/src/app/infrastructure/execution/service-runner.ts b/apps/services/documents/src/app/infrastructure/execution/service-runner.ts\nnew file mode 100644\n+import type { Runner } from '@agentic-workspace/runtime-executions';\n+\n+type RunnerCommand = Parameters<Runner['execute']>[0];\n+type RunnerResult = Awaited<ReturnType<Runner['execute']>>;\n+\n+export class ServiceRunner {\n+    public constructor(private readonly runner: Runner) {}\n+\n+    public async execute(command: RunnerCommand): Promise<RunnerResult> {\n+        let lastError: unknown;\n+\n+        for (let attempt = 0; attempt < 3; attempt += 1) {\n+            try {\n+                return await this.runner.execute(command);\n+            } catch (error) {\n+                lastError = error;\n+            }\n+        }\n+\n+        throw lastError;\n+    }\n+}"
+        },
+        {
+            "id": "standard-manifest-composition",
+            "expected": "no-violation",
+            "context": "The service already composes RuntimeExecutionsModule.register([documents]); this refactor only renames the local DynamicModule variable while preserving the shared adapter, hosted-package selection, and imports/exports.",
+            "diff": "diff --git a/apps/services/documents/src/app/infrastructure/infrastructure.module.ts b/apps/services/documents/src/app/infrastructure/infrastructure.module.ts\n-const documentsRuntimeModule = RuntimeExecutionsModule.register([documents]);\n+const documentsExecutionRuntimeModule = RuntimeExecutionsModule.register([documents]);\n@@\n-        documentsRuntimeModule,\n+        documentsExecutionRuntimeModule,\n@@\n-        documentsRuntimeModule,\n+        documentsExecutionRuntimeModule,"
+        }
+    ]
+}

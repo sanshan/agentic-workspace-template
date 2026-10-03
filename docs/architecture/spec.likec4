@@ -1,0 +1,9 @@
+specification {
+  element actor
+  element system
+  element webapp
+  element app
+  element boundary
+  element database
+  element storage
+}

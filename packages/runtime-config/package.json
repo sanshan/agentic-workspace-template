@@ -1,0 +1,25 @@
+{
+    "name": "@agentic-workspace/runtime-config",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./workspace": {
+            "types": "./src/workspace.ts",
+            "import": "./src/workspace.ts",
+            "default": "./src/workspace.ts"
+        },
+        "./package.json": "./package.json"
+    },
+    "dependencies": {
+        "zod": "catalog:"
+    }
+}

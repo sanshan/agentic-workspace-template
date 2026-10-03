@@ -1,0 +1,8 @@
+{
+    "name": "@agentic-workspace/object-storage",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/object-storage/src",
+    "projectType": "library",
+    "tags": ["type:runtime"]
+}
+

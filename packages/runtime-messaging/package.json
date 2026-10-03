@@ -1,0 +1,32 @@
+{
+    "name": "@agentic-workspace/runtime-messaging",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./nest": {
+            "types": "./dist/nest.d.ts",
+            "import": "./dist/nest.js",
+            "default": "./dist/nest.js"
+        }
+    },
+    "dependencies": {
+        "@event-driven-platform/event": "^0.2.0",
+        "@nestjs/common": "^11.0.0"
+    },
+    "devDependencies": {
+        "@event-driven-platform/execution": "^0.0.8",
+        "@nestjs/core": "^11.0.0",
+        "@nestjs/testing": "^11.0.0",
+        "reflect-metadata": "^0.2.2"
+    }
+}

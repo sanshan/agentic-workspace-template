@@ -1,0 +1,8 @@
+{
+    "name": "@agentic-workspace/runtime-presenters",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/runtime-presenters/src",
+    "projectType": "library",
+    "tags": ["type:runtime"]
+}
+

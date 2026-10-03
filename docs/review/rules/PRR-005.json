@@ -1,0 +1,11 @@
+{
+    "id": "PRR-005",
+    "title": "Keep generator documentation aligned with its contract",
+    "scope": "Changes under tools/generators that alter an available generator name, invocation command, generated project layout, project identity, architecture tag, or documented output contract.",
+    "applies_when": "The changed generator behavior is described by tools/generators/README.md before the pull request.",
+    "violation": "The pull request changes the documented generator contract but leaves the canonical README claiming the previous command, name, layout, identity, tag, or behavior.",
+    "non_violation": "An internal refactor that preserves the documented contract is not a violation, and a contract change is not a violation when the same pull request updates or removes every affected README claim.",
+    "severity": "blocking",
+    "evidence": "Cite the changed generator behavior and the exact README claim that becomes false on the reviewed head.",
+    "canonical_source": "tools/generators/README.md"
+}

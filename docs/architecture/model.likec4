@@ -1,0 +1,3 @@
+model {
+  workspace = system "Agentic Workspace Template"
+}

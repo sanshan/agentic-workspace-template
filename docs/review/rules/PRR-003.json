@@ -1,0 +1,11 @@
+{
+    "id": "PRR-003",
+    "title": "Keep service tests at their owning behavior boundary",
+    "scope": "Changes that add or materially expand tests under apps/api, apps/api-e2e, apps/services, or service E2E projects.",
+    "applies_when": "A changed service test asserts behavior also represented by a consumed package, runtime, EDP, persistence, presenter, or vendor boundary.",
+    "violation": "The test re-executes semantics not implemented by the service test's boundary and proves no service-owned composition, mapping, configuration, integration, or observable end-to-end behavior.",
+    "non_violation": "A test that proves the consuming service's own wiring, mapping, route, configuration, or cross-boundary observable result is not duplicate merely because lower-level collaborators participate.",
+    "severity": "blocking",
+    "evidence": "Cite the changed assertion, the lower boundary that owns the behavior, and why the test contains no service-owned behavior or integration evidence.",
+    "canonical_source": "docs/engineering/service-guidelines.md#testing-ownership"
+}
