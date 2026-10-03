@@ -22,6 +22,9 @@
     "files": [
         "dist",
         "!**/*.tsbuildinfo",
-        "generators.json"
+        "generators.json",
+        "src/generators/**/schema.json",
+        "service-dependencies.json",
+        "service-e2e-dependencies.json"
     ]
 }

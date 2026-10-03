@@ -4,7 +4,13 @@
         "outDir": "./out-tsc/vitest",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node", "vitest"]
+        "types": [
+            "vitest/globals",
+            "vitest/importMeta",
+            "vite/client",
+            "node",
+            "vitest"
+        ]
     },
     "include": [
         "vite.config.ts",
@@ -19,7 +25,8 @@
         "src/**/*.spec.js",
         "src/**/*.test.jsx",
         "src/**/*.spec.jsx",
-        "src/**/*.d.ts"
+        "src/**/*.d.ts",
+        "vitest.integration.mts"
     ],
     "references": [
         {

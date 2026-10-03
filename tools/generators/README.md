@@ -2,6 +2,16 @@
 
 `@agentic-workspace/generators` contains the repository-owned Nx generators for proven Agentic Workspace project shapes.
 
+## Preparation
+
+After installation, build the local generator implementation:
+
+```bash
+pnpm nx build @agentic-workspace/generators
+```
+
+The manifest loads compiled factories from `dist` and schemas from `src`; TypeScript does not copy JSON schemas during compilation.
+
 ## Available generators
 
 Create a business package:
