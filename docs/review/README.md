@@ -229,6 +229,7 @@ The initial catalog deliberately contains only these high-signal decisions:
 | `PRR-003` | A service test repeats semantics owned by a consumed boundary. | `docs/engineering/service-guidelines.md#testing-ownership` | Existing test runners can execute the test but cannot decide whether its assertions prove service-owned behavior or merely restate EDP/package/runtime behavior. |
 | `PRR-004` | A service reconstructs EDP or shared execution-runtime behavior. | `docs/engineering/service-guidelines.md#shared-edp-runtime-consumption` | ESLint enforces import direction, not semantic reimplementation through locally named wrappers, providers, policies, or stores. |
 | `PRR-005` | Generator behavior changes while its canonical README retains a false contract. | `tools/generators/README.md` | CI can run generators but does not semantically compare their commands/output contract with the prose developers consume. |
+| `PRR-007` | High-level topology changes without a matching LikeC4 overview update. | `docs/architecture/README.md#maintenance-contract` | Build validation cannot establish whether the overview accurately represents the implemented system boundaries and relationships. |
 
 The catalog does not reproduce Nx project boundaries, service-layer import restrictions, type checking, build behavior, test execution, E2E behavior, or `nx sync:check`; normal deterministic CI already owns those checks.
 

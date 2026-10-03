@@ -20,11 +20,14 @@ The remaining inherited review rules and fixtures retain their semantics; integr
 
 ## Extraction verification status
 
-- Passed: 17 review-validator tests, six-rule catalog validation, git diff whitespace checks.
-- Pending: complete frozen install, Nx project discovery/sync, lint, typecheck, tests, builds, and real generator smoke checks. Package installation was blocked by the execution environment's npm network policy; offline metadata was insufficient.
-- Pending: independent review, GitHub Template setting and branch protection.
-- GitHub write access was granted after the initial 403; publication and CI checks are in progress.
+Verified by [GitHub Actions run 37155703787](https://github.com/sanshan/agentic-workspace-template/actions/runs/37155703787) for implementation revision `89a56110d7caf207f06c05ac516f59a25ef58a12`:
 
-This extraction is a draft and must not be advertised as a validated starter until the pending checks pass.
+- Frozen dependency installation and Nx project synchronization.
+- Review-validator tests and six-rule catalog validation.
+- Workspace lint, typecheck, unit tests and builds.
+- Package and service generator dry runs, real generation and generated-project checks.
+- SQL adapter integration tests against PostgreSQL in a separate CI job.
 
-Frozen offline installation accepted the existing lockfile without resolution changes, but could not complete because the package cache is incomplete.
+Local installation was blocked by the execution environment's npm network policy; the complete checks above ran in GitHub Actions instead.
+
+The extraction is published as [draft PR #1](https://github.com/sanshan/agentic-workspace-template/pull/1). Independent provider review, GitHub Template mode and branch protection remain setup tasks. Before merging, verify green CI and an independent review for the exact current PR head; the historical run linked above does not cover later commits.
