@@ -22,7 +22,7 @@ The baseline has no deployable application and requires no running database, bro
 - Core tenant contracts, object storage, runtime configuration, executions, messaging, health, observability and presenter adapters.
 - Business-package, Nest service and service-E2E generators in `tools/generators`.
 - Scoped agent instructions, engineering guidance, independent review contract and validated review fixtures.
-- GitHub Actions verification without database services.
+- Baseline checks without database services; a separate mandatory CI job verifies SQL adapters against PostgreSQL.
 
 Read `AGENTS.md` before development, `tools/generators/README.md` before generating a project, and `docs/template-bootstrap.md` when creating a repository from this template.
 
@@ -35,3 +35,7 @@ Generated Nest services currently use TypeORM and require their own database con
 ## Provenance
 
 Derived from `sanshan/accounterbro` at commit `9e389454ce5976fcad79ead7cca22e1e92586399`. The original MIT license and attribution are preserved. Upstream review calibration results are not evidence of integration in a newly created repository.
+
+## SQL adapter integration tests
+
+The default `test` targets require no database. SQL adapter suites are owned by `test-integration` in runtime-health and runtime-executions. CI runs them in a separate required job with ephemeral PostgreSQL. To run locally, supply PostgreSQL and `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`, then run `pnpm nx run-many -t test-integration --parallel=1`. The user must be able to create test databases.

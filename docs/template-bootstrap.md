@@ -3,7 +3,7 @@
 1. Create a repository from this GitHub template. Each new repository has an independent lifecycle; template updates are not automatically propagated.
 2. Choose the workspace npm scope. Update workspace package names, imports, generator output and its tests together; regenerate the lockfile and run all verification targets. The initial scope is `@agentic-workspace`.
 3. Retain the original license attribution. Adapt README and product-specific specifications.
-4. Enable GitHub Actions. Configure branch protection/rulesets for `main`, require PRs and the `Verify workspace` check, and disable force pushes/deletion as appropriate for the owner.
+4. Enable GitHub Actions. Configure branch protection/rulesets for `main`, require PRs and both `Verify workspace` and `Verify SQL adapters` checks, and disable force pushes/deletion as appropriate for the owner.
 5. Connect the intended independent reviewer separately. Apps, repository permissions, secrets, environments, Pages and branch protection do not transfer with source files.
 6. Verify the provider's post-CI review trigger. Follow `docs/review/README.md`; upstream calibration evidence is historical, not proof for this repository.
 7. Add apps using the applicable Nx generators. Add databases, deployments and secrets only for applications that require them.

@@ -1,6 +1,6 @@
 # Web Agent Rules
 
-These rules apply to `apps/web` in addition to the workspace rules from the root `AGENTS.md`.
+These rules apply to frontend applications in addition to the workspace rules from the root `AGENTS.md`.
 
 ## 1. Current Frontend Foundation
 

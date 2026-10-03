@@ -454,9 +454,6 @@ importers:
 
   packages/core:
     dependencies:
-      '@event-driven-platform/aggregate-reference':
-        specifier: ^0.1.7
-        version: 0.1.7
       '@event-driven-platform/tenant-reference':
         specifier: ^0.1.7
         version: 0.1.7
