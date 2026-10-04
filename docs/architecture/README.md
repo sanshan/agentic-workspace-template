@@ -14,6 +14,6 @@ The model is maintained explicitly. It is not generated from Markdown, Nx projec
 
 ## Publication
 
-The template contains only a workspace marker, not fictitious running services. Add real application and data boundaries when they exist.
+The template model shows the workspace and its optional local PostgreSQL infrastructure. No application or business schema is included. Add application boundaries and relationships when they exist.
 
 The Architecture workflow is manual and validates/builds the model as a downloadable artifact. It does not require Pages settings. A consumer may add Pages publication after configuring its repository.

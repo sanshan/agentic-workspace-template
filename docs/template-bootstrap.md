@@ -6,15 +6,15 @@
 4. Enable GitHub Actions. Configure branch protection/rulesets for `main`, require PRs and both `Verify workspace` and `Verify SQL adapters` checks, and disable force pushes/deletion as appropriate for the owner.
 5. Connect the intended independent reviewer separately. Apps, repository permissions, secrets, environments, Pages and branch protection do not transfer with source files.
 6. Verify the provider's post-CI review trigger. Follow `docs/review/README.md`; upstream calibration evidence is historical, not proof for this repository.
-7. Add apps using the applicable Nx generators. Add databases, deployments and secrets only for applications that require them.
+7. Configure local PostgreSQL using the root `.env.example` and Docker Compose; see README. Add apps using the applicable Nx generators, configure service-owned database variables, and add deployments/secrets only as required.
 8. Inspect generated changes and run the affected Nx checks before merging.
 
 Do not configure product deployment credentials in the template. GitHub Template mode itself must be enabled in repository settings.
 
 ## Extraction decisions
 
-Preserved: reusable runtime packages, tenant core contracts, object storage, generators, Nx/build/lint/test conventions and agent/review guidance.
-Removed: document/document-processing business identities and packages, OCR capability, existing apps/E2E/load harness, product architecture topology (LikeC4 tooling is retained), compose configuration and product workflows.
+Preserved: reusable runtime packages, tenant core contracts, object storage, generators, Nx/build/lint/test conventions and agent/review guidance. Local PostgreSQL infrastructure is retained with neutral database/volume names and a root environment example; SQL CI uses the same Compose definition.
+Removed: document/document-processing business identities and packages, OCR capability, existing apps/E2E/load harness, product architecture topology (LikeC4 tooling is retained) and product workflows.
 Retired rule PRR-006: it governed document upload restrictions in the removed product specification. Its ID must not be reused.
 The remaining inherited review rules and fixtures retain their semantics; integration and any necessary calibration must be verified in each consumer repository.
 

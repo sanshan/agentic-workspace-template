@@ -1,6 +1,7 @@
 views {
   view index {
     include workspace
+    include workspace.localDatabase
     autoLayout LeftRight
   }
 }

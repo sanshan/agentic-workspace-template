@@ -14,7 +14,7 @@ pnpm review:validate
 pnpm nx run-many -t lint typecheck test build --parallel=2
 ```
 
-The baseline has no deployable application and requires no running database, broker or external service. Runtime adapters are optional building blocks, not started services.
+The template includes local PostgreSQL infrastructure and reusable runtime adapters. It has no deployable application. The default workspace checks do not require a running database; SQL integration tests use the included PostgreSQL service.
 
 ## Included
 
@@ -23,6 +23,7 @@ The baseline has no deployable application and requires no running database, bro
 - Business-package, Nest service and service-E2E generators in `tools/generators`.
 - Scoped agent instructions, engineering guidance, independent review contract and validated review fixtures.
 - Baseline checks without database services; a separate mandatory CI job verifies SQL adapters against PostgreSQL.
+- PostgreSQL 17 in Docker Compose with a persistent volume and neutral environment configuration.
 
 Read `AGENTS.md` before development, `tools/generators/README.md` before generating a project, and `docs/template-bootstrap.md` when creating a repository from this template.
 
@@ -39,3 +40,20 @@ Derived from `sanshan/accounterbro` at commit `9e389454ce5976fcad79ead7cca22e1e9
 ## SQL adapter integration tests
 
 The default `test` targets require no database. SQL adapter suites are owned by `test-integration` in runtime-health and runtime-executions. CI runs them in a separate required job with ephemeral PostgreSQL. To run locally, supply PostgreSQL and `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`, then run `pnpm nx run-many -t test-integration --parallel=1`. The user must be able to create test databases.
+
+## Local PostgreSQL
+
+Install Docker with Compose, copy `.env.example` to `.env`, and set a local `DB_PASSWORD` before starting:
+
+```sh
+cp .env.example .env
+# Set DB_PASSWORD in .env using your editor.
+docker compose up -d --wait database
+pnpm nx run-many -t test-integration --parallel=1
+```
+
+The database is named `workspace` by default and listens on `127.0.0.1:5432`. Override `DB_PORT` if that host port is occupied. Compose uses `DB_NAME`, `DB_USERNAME` and `DB_PASSWORD` to initialize PostgreSQL; `DB_HOST` configures host-side test clients. Nx loads the root `.env` for its targets.
+
+Data is retained in the project-scoped `postgres-data` volume. `docker compose down` stops the infrastructure and retains data. `docker compose down --volumes` deletes the database data. Changing initialization credentials or `DB_NAME` does not reconfigure an existing volume; use SQL administration for that.
+
+Generated services use their own `<SERVICE>_DB_*` variables. Configure these at the service boundary and provision any separate service-owned database explicitly; Compose initializes only the shared local database. The Compose database is development infrastructure, not a production deployment.

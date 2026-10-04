@@ -28,6 +28,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm nx sync:check
       - run: pnpm review:validate
+      - name: Validate architecture model
+        uses: likec4/actions@d36a6b8c87c1d540a3737302808755db435183b0
+        with:
+          action: build
+          path: docs/architecture
+          output: likec4-dist
       - run: pnpm nx run-many -t lint typecheck test build --parallel=2
       - name: Smoke test package and service generators
         run: |
@@ -48,24 +54,13 @@ jobs:
       DB_PORT: '5432'
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
-      DB_NAME: agentic-workspace
-    services:
-      postgres:
-        image: postgres:17
-        env:
-          POSTGRES_DB: agentic-workspace
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
+      DB_NAME: workspace
     steps:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - name: Start template PostgreSQL
+        run: docker compose up -d --wait --wait-timeout 90 database
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
@@ -73,3 +68,9 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm nx run-many -t test-integration --parallel=1
+      - name: Database logs on failure
+        if: failure()
+        run: docker compose logs database
+      - name: Stop PostgreSQL
+        if: always()
+        run: docker compose down
