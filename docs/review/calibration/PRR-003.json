@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-003",
+    "cases": [
+        {
+            "id": "service-test-repeats-runner-retry",
+            "expected": "violation",
+            "context": "The service adds no retry policy or adapter. Runner retry behavior is owned by EDP and consumed unchanged through the shared runtime.",
+            "diff": "diff --git a/apps/services/documents/src/app/application/application.module.spec.ts b/apps/services/documents/src/app/application/application.module.spec.ts\n+it('retries a failed Operation three times', async () => {\n+    await runner.run(command);\n+    expect(operationHandler.execute).toHaveBeenCalledTimes(3);\n+});"
+        },
+        {
+            "id": "controller-proves-owned-context-mapping",
+            "expected": "no-violation",
+            "context": "The HTTP presenter owns mapping an uploaded file plus actor and tenant identity into the concrete UseCase request.",
+            "diff": "diff --git a/apps/services/documents/src/app/presenters/http/documents/documents.controller.spec.ts b/apps/services/documents/src/app/presenters/http/documents/documents.controller.spec.ts\n+expect(execute).toHaveBeenCalledWith(expect.objectContaining({\n+    input: { file },\n+    context: expect.objectContaining({ actor, tenant }),\n+}));"
+        }
+    ]
+}

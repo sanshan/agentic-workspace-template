@@ -1,0 +1,76 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    name: Verify workspace
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NX_DAEMON: 'false'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm nx sync:check
+      - run: pnpm review:validate
+      - name: Validate architecture model
+        uses: likec4/actions@d36a6b8c87c1d540a3737302808755db435183b0
+        with:
+          action: build
+          path: docs/architecture
+          output: likec4-dist
+      - run: pnpm nx run-many -t lint typecheck test build --parallel=2
+      - name: Smoke test package and service generators
+        run: |
+          pnpm nx g @agentic-workspace/generators:package smoke-feature --dry-run --no-interactive
+          pnpm nx g @agentic-workspace/generators:package smoke-feature --no-interactive
+          pnpm nx g @agentic-workspace/generators:service smoke-service --dry-run --no-interactive
+          pnpm nx g @agentic-workspace/generators:service smoke-service --no-interactive
+          pnpm install --no-frozen-lockfile
+          pnpm nx sync
+          pnpm nx run-many -t lint typecheck build --projects=@agentic-workspace/smoke-feature,@agentic-workspace/smoke-service-service --parallel=2
+  database-tests:
+    name: Verify SQL adapters
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NX_DAEMON: 'false'
+      DB_HOST: 127.0.0.1
+      DB_PORT: '5432'
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: workspace
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Start template PostgreSQL
+        run: docker compose up -d --wait --wait-timeout 90 database
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm nx run-many -t test-integration --parallel=1
+      - name: Database logs on failure
+        if: failure()
+        run: docker compose logs database
+      - name: Stop PostgreSQL
+        if: always()
+        run: docker compose down

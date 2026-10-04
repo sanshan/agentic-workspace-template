@@ -1,0 +1,90 @@
+{
+    "name": "@agentic-workspace/runtime-executions",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./typeorm": {
+            "types": "./dist/typeorm.d.ts",
+            "import": "./dist/typeorm.js",
+            "default": "./dist/typeorm.js"
+        },
+        "./execution-log/typeorm": {
+            "types": "./dist/execution-log/typeorm.d.ts",
+            "import": "./dist/execution-log/typeorm.js",
+            "default": "./dist/execution-log/typeorm.js"
+        },
+        "./outbox/typeorm": {
+            "types": "./dist/outbox/typeorm.d.ts",
+            "import": "./dist/outbox/typeorm.js",
+            "default": "./dist/outbox/typeorm.js"
+        },
+        "./runner": {
+            "types": "./dist/runner.d.ts",
+            "import": "./dist/runner.js",
+            "default": "./dist/runner.js"
+        },
+        "./reader": {
+            "types": "./dist/reader.d.ts",
+            "import": "./dist/reader.js",
+            "default": "./dist/reader.js"
+        },
+        "./use-case-execution/typeorm": {
+            "types": "./dist/use-case-execution/typeorm.d.ts",
+            "import": "./dist/use-case-execution/typeorm.js",
+            "default": "./dist/use-case-execution/typeorm.js"
+        },
+        "./use-case-executor": {
+            "types": "./dist/use-case-executor.d.ts",
+            "import": "./dist/use-case-executor.js",
+            "default": "./dist/use-case-executor.js"
+        },
+        "./nest": {
+            "types": "./dist/nest.d.ts",
+            "import": "./dist/nest.js",
+            "default": "./dist/nest.js"
+        }
+    },
+    "dependencies": {
+        "@agentic-workspace/runtime-observability": "workspace:*",
+        "@event-driven-platform/clock": "^0.0.9",
+        "@event-driven-platform/event": "^0.1.8",
+        "@event-driven-platform/execution": "^0.0.8",
+        "@event-driven-platform/execution-log": "^0.0.10",
+        "@event-driven-platform/execution-log-store": "^0.0.10",
+        "@event-driven-platform/execution-transaction": "^0.0.8",
+        "@event-driven-platform/intent": "^0.2.4",
+        "@event-driven-platform/observability": "^0.2.0",
+        "@event-driven-platform/operation": "^0.1.9",
+        "@event-driven-platform/operation-event-envelope-factory": "^0.0.11",
+        "@event-driven-platform/operation-handler": "^0.0.10",
+        "@event-driven-platform/operation-handler-resolver": "^0.0.10",
+        "@event-driven-platform/outbox": "^0.0.10",
+        "@event-driven-platform/outbox-store": "^0.0.10",
+        "@event-driven-platform/read": "^0.0.8",
+        "@event-driven-platform/read-handler": "^0.0.7",
+        "@event-driven-platform/read-handler-resolver": "^0.0.7",
+        "@event-driven-platform/reader": "^0.0.10",
+        "@event-driven-platform/runner": "^0.0.14",
+        "@event-driven-platform/use-case-execution-store": "^0.0.7",
+        "@event-driven-platform/use-case-executor": "^0.1.2",
+        "@nestjs/common": "^11.0.0",
+        "@nestjs/typeorm": "^11.0.3",
+        "typeorm": "catalog:"
+    },
+    "devDependencies": {
+        "@nestjs/core": "^11.0.0",
+        "@nestjs/testing": "^11.0.0",
+        "pg": "catalog:",
+        "reflect-metadata": "^0.2.2"
+    }
+}

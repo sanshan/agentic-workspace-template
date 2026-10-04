@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-002",
+    "cases": [
+        {
+            "id": "copied-service-configuration-rules",
+            "expected": "violation",
+            "context": "docs/engineering/service-configuration-guidelines.md already owns reusable typed service-configuration rules for every internal service.",
+            "diff": "diff --git a/apps/services/AGENTS.md b/apps/services/AGENTS.md\n+Every service MUST create a registerAs configuration factory.\n+Every service MUST inject configuration through the factory KEY and ConfigType.\n+Application and domain code MUST NOT inject service configuration."
+        },
+        {
+            "id": "concise-routing-reference",
+            "expected": "no-violation",
+            "context": "The nested file needs to direct service changes to the existing reusable configuration owner without restating its rules.",
+            "diff": "diff --git a/apps/services/AGENTS.md b/apps/services/AGENTS.md\n+Configuration changes MUST follow docs/engineering/service-configuration-guidelines.md."
+        }
+    ]
+}

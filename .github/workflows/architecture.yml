@@ -1,0 +1,21 @@
+name: Architecture
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: likec4/actions@d36a6b8c87c1d540a3737302808755db435183b0
+        with:
+          action: build
+          path: docs/architecture
+          output: likec4-dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: architecture
+          path: likec4-dist

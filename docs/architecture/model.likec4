@@ -1,0 +1,7 @@
+model {
+  workspace = system "Agentic Workspace Template" {
+    localDatabase = database "Development PostgreSQL" {
+      description "Optional local PostgreSQL 17 from root Docker Compose; persistent project-scoped volume. No application or business schema is included."
+    }
+  }
+}

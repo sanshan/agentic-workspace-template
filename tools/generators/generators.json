@@ -1,0 +1,19 @@
+{
+    "generators": {
+        "package": {
+            "factory": "./dist/generators/package/package",
+            "schema": "./src/generators/package/schema.json",
+            "description": "package generator"
+        },
+        "service": {
+            "factory": "./dist/generators/service/service",
+            "schema": "./src/generators/service/schema.json",
+            "description": "canonical internal service generator"
+        },
+        "service-e2e": {
+            "factory": "./dist/generators/service-e2e/service-e2e",
+            "schema": "./src/generators/service-e2e/schema.json",
+            "description": "canonical internal service E2E generator"
+        }
+    }
+}

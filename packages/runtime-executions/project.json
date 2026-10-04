@@ -1,0 +1,22 @@
+{
+    "name": "@agentic-workspace/runtime-executions",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/runtime-executions/src",
+    "projectType": "library",
+    "tags": [
+        "type:runtime"
+    ],
+    "targets": {
+        "test-integration": {
+            "executor": "nx:run-commands",
+            "cache": false,
+            "dependsOn": [
+                "^build"
+            ],
+            "options": {
+                "command": "vitest run --config vitest.integration.mts",
+                "cwd": "packages/runtime-executions"
+            }
+        }
+    }
+}

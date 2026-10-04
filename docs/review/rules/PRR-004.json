@@ -1,0 +1,11 @@
+{
+    "id": "PRR-004",
+    "title": "Consume rather than reconstruct the shared execution runtime",
+    "scope": "Changes under apps/api or apps/services that compose or implement Runner, Reader, UseCaseExecutor, handler resolution, execution transactions, execution log, Outbox, or durable UseCase execution.",
+    "applies_when": "A service change adds a local adapter, provider graph, token, wrapper, persistence implementation, or execution policy for a capability named in the scope.",
+    "violation": "The added service code reconstructs or behavior-wraps a capability already owned by EDP or @agentic-workspace/runtime-executions instead of consuming its published runtime composition contract.",
+    "non_violation": "Selecting hosted package manifests, supplying the service-owned DataSource, configuration, or external integrations, and implementing a proven service-specific capability not owned by the shared runtime are not violations.",
+    "severity": "blocking",
+    "evidence": "Cite the new service-owned implementation and the specific existing EDP or @agentic-workspace/runtime-executions owner or public entrypoint that already provides the duplicated responsibility.",
+    "canonical_source": "docs/engineering/service-guidelines.md#shared-edp-runtime-consumption"
+}

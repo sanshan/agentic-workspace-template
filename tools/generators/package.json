@@ -1,0 +1,30 @@
+{
+    "name": "@agentic-workspace/generators",
+    "version": "0.0.1",
+    "private": true,
+    "type": "commonjs",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "dependencies": {
+        "@nx/devkit": "23.0.2",
+        "@nx/js": "23.0.2"
+    },
+    "generators": "./generators.json",
+    "files": [
+        "dist",
+        "!**/*.tsbuildinfo",
+        "generators.json",
+        "src/generators/**/schema.json",
+        "service-dependencies.json",
+        "service-e2e-dependencies.json"
+    ]
+}

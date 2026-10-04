@@ -1,0 +1,17 @@
+{
+    "rule_id": "PRR-005",
+    "cases": [
+        {
+            "id": "renamed-generator-command-with-stale-readme",
+            "expected": "violation",
+            "context": "tools/generators/README.md still lists @agentic-workspace/generators:service as the command for creating an internal service.",
+            "diff": "diff --git a/tools/generators/generators.json b/tools/generators/generators.json\n-        \"service\": {\n+        \"internal-service\": {\n             \"factory\": \"./src/generators/service/service\"\n         }"
+        },
+        {
+            "id": "schema-type-only-refactor",
+            "expected": "not-applicable",
+            "context": "The generator command, options, output layout, project identity, tags, and documented behavior are unchanged.",
+            "diff": "diff --git a/tools/generators/src/generators/service/schema.d.ts b/tools/generators/src/generators/service/schema.d.ts\n-export interface Schema {\n+export interface ServiceGeneratorSchema {\n     name: string;\n }"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "devDependencies": {
+        "@agentic-workspace/runtime-config": "workspace:*",
+        "axios": "^1.19.0",
+        "zod": "catalog:"
+    }
+}

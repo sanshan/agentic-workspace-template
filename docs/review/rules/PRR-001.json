@@ -1,0 +1,11 @@
+{
+    "id": "PRR-001",
+    "title": "Keep changes within the declared task scope",
+    "scope": "All code-changing pull requests with a declared task or issue goal; mechanically generated or necessarily coupled supporting changes remain in scope.",
+    "applies_when": "A coherent changed file or hunk can be compared with the linked task goal, scope, acceptance criteria, and explicit exclusions.",
+    "violation": "The change introduces behavior, refactoring, a dependency, tooling, or cleanup that is not required by the declared outcome and can be removed without preventing that outcome.",
+    "non_violation": "Supporting tests, documentation, generated metadata, and prerequisite edits are not violations when the declared outcome requires them; breadth across several files alone is not a violation.",
+    "severity": "blocking",
+    "evidence": "Cite the declared scope or exclusion, the affected location, and why the changed responsibility is causally independent of the requested outcome.",
+    "canonical_source": "AGENTS.md#12-change-discipline"
+}

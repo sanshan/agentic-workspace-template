@@ -1,0 +1,11 @@
+{
+    "id": "PRR-007",
+    "title": "Keep the LikeC4 system overview aligned with high-level topology",
+    "scope": "Pull requests whose change can alter Agentic Workspace high-level System Overview topology: deployable applications/services, external systems, owned data/storage boundaries, or major service-to-service/event relationships.",
+    "applies_when": "The reviewed change adds, removes, or changes at least one high-level topology fact represented by docs/architecture/.",
+    "violation": "The high-level topology change is not reflected in the same pull request's LikeC4 model, or the changed model contradicts the implemented/documented topology.",
+    "non_violation": "Editorial documentation changes, internal use-case/controller/handler refactors, implementation details inside an existing system boundary, and package/runtime dependency changes that do not alter System Overview topology do not require a LikeC4 update.",
+    "severity": "blocking",
+    "evidence": "Cite the topology-changing repository location, the corresponding missing or contradictory node/relationship/data boundary in docs/architecture/, and the maintenance requirement in the canonical source.",
+    "canonical_source": "docs/architecture/README.md#maintenance-contract"
+}
